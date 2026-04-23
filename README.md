@@ -3,6 +3,8 @@
 
 # Starshard
 
+> **Reference implementation**: [starshard-ai/reference-impl](https://github.com/starshard-ai/reference-impl) — a FastAPI + SQLite Phase 0 memory hub built from these docs. Clone, `docker compose up`, start writing memories.
+
 **A shard that holds the whole.**
 
 Starshard is a substrate for multi-agent personal AI systems where memory is the primary layer and agents are peripherals. Every user runs their own complete instance. Data is owned by the user. Architecture prioritizes session-spanning coherence over session-level stickiness.
