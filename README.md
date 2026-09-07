@@ -83,14 +83,31 @@ Phase 0 (memory hub only) takes 30-45 minutes to set up. Phase 1 (task dispatch)
 
 Starshard is an architecture specification and reference implementation, released for community adoption and feedback.
 
-**What is complete:**
+**Specified** (the document exists and is complete):
 - Memory hub schema and API specification (ARCHITECTURE.md §2)
 - Dispatch protocol specification (ARCHITECTURE.md §3)
 - Mirror consolidation specification (ARCHITECTURE.md §4)
-- Safety Charter with 6 hard mechanisms (SAFETY-CHARTER.md)
-- Self-hosting guide covering Phase 0 through Phase 2 (QUICKSTART.md)
-- Reference hub implementation (Python + FastAPI + SQLite)
+- Safety Charter, 6 hard mechanisms (SAFETY-CHARTER.md)
+- Self-hosting guide, Phase 0 through Phase 2 (QUICKSTART.md)
+
+**Running** (there is code, and the enforcement point can be named):
+- Reference hub implementation (Python + FastAPI + SQLite) — memory CRUD, MCP bridge,
+  Mirror consolidation, assumption-conflict checking
 - Poller daemon reference implementation
+
+**Specified but NOT enforced by the reference implementation** — stated plainly because
+the alternative is a README that reports a safety property the code does not have:
+- HM-2 write-protected memories, HM-3 untrusted-content quarantine tagging,
+  HM-4 outbound audit and sensitive-contact gate, HM-5 kill switch,
+  HM-6 safety-flag anti-propagation TTL — **none of these are implemented** in
+  [`reference-impl`](https://github.com/starshard-ai/reference-impl).
+- HM-1 memory provenance is **not enforced in either direction**: provenance is an
+  optional field with no rejection on write, and `PATCH /memory/{id}` overwrites the
+  same field the charter declares write-once.
+
+The charter is a design worth adopting; this repository is not evidence that it runs.
+That gap, and why reporting it is better than quietly fixing the README first, is
+written up at [Safety is a property of the harness](https://machengshen.github.io/safety/).
 
 **What is in progress:**
 - Full test suite for the reference implementation
@@ -123,6 +140,21 @@ Starshard was preceded by a LessWrong post describing the memory consolidation t
 [Starshard: Sleep-Inspired Memory Consolidation for a Multi-Agent Personal AI](https://www.lesswrong.com/posts/wg56edFhuPCsZrncQ/starshard-sleep-inspired-memory-consolidation-for-a-multi)
 
 That post covers the theoretical foundations in more depth: why sleep-inspired consolidation maps onto multi-session AI memory, what the "forgetting problem" looks like at scale, and open research questions. The architecture documents in this repository are the operational follow-on.
+
+## Safety and alignment
+
+A companion write-up on what a personal agent-fleet harness can and cannot enforce —
+principles, the mechanisms actually running, four de-identified incidents, a comparison
+with publicly reported frontier-lab failures, and published kill conditions. Every
+mechanism there carries a two-value badge: `running` (code enforces it, the enforcement
+point can be named) or `specified` (a written design that no public code enforces).
+
+https://machengshen.github.io/safety/
+
+中文版:https://machengshen.github.io/safety/index.zh.html
+
+It is not a companion piece that flatters this repository — the audit behind it is where
+the Project Status section above got corrected.
 
 ## Contact
 
