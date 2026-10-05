@@ -158,7 +158,7 @@ the Project Status section above got corrected.
 
 ## Contact
 
-Questions, feedback, and collaboration inquiries: macshen93@gmail.com
+Questions, feedback, and collaboration inquiries: please open a [GitHub Issue](https://github.com/starshard-ai/architecture-v1/issues).
 
 ## Contributing
 

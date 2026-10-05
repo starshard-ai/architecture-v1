@@ -1,0 +1,14 @@
+Starshard architecture documents
+Copyright (C) 2026 Starshard contributors
+
+Unless a file states otherwise in its SPDX-License-Identifier header, the
+contents of this repository are licensed under the Apache License, Version 2.0
+(see LICENSE).
+
+Per-file exceptions, as declared in each file's SPDX header and in the
+"Licensing" section of README.md:
+
+  SAFETY-CHARTER.md   CC0-1.0       https://creativecommons.org/publicdomain/zero/1.0/
+  PHILOSOPHY.md       CC-BY-SA-4.0  https://creativecommons.org/licenses/by-sa/4.0/
+
+Those files are not covered by the Apache License, Version 2.0.
